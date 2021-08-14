@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Farm in Fantasy</title>
+    <script src="react.js"></script>
+    <script src="react-dom.js"></script>
+    <script src="babel.js"></script>
+</head>
+
+<body id="mainBody" class="dayBody">
+    <div id="program"></div>
+    <script type="text/babel">
+        class Field extends React.Component {
+
+            render() {
+                return (
+                    <div>
+                        <button className="btn"></button>
+                    </div>
+                )
+            }
+        }
+        class Diolog extends React.Component {
+            render() {
+                return (
+                    <div className="box">
+                        <div>Hello, world!</div>
+                        <button>Yes</button>
+                        <button>No</button>
+                    </div>
+                );
+            };
+        }
+
+        class DayNight extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { day: true };
+            };
+            change = () => {
+                if (this.state.day) {
+                    this.setState({ day: false });
+                    this.Night();
+                    document.body.className = "nightBody";
+
+                } else {
+                    this.setState({ day: true });
+                    this.Day();
+                    document.body.className = "dayBody";
+                }
+            };
+            Day = () => {
+                return (
+                    <div>
+                        <button onClick={this.change} className="btn dayOrNight">day</button>
+                    </div>
+                );
+            };
+            Night = () => {
+                return (
+                    <div>
+                        <button onClick={this.change} className="btn dayOrNight">night</button>
+                    </div>
+                );
+
+            };
+            render() {
+                if (this.state.day) {
+                    return (this.Day());
+                } else {
+                    return (this.Night());
+                }
+            };
+        }
+
+        class Vegetables extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { do: false };
+            }
+            plant = () => {
+
+            };
+            render() {
+                if (this.state.do) {
+                    <div>
+                        <button ref="meaning" defaultValue={this.props.children}></button>
+                    </div>
+                } else {
+                    <div>
+                        <button ref="meaning" defaultValue={this.props.children}></button>
+                    </div>
+                }
+            }
+        }
+
+        class Talks extends React.Component {
+            render() {
+
+            };
+        }
+
+        var app = document.getElementById("program");
+        ReactDOM.render(
+            <div>
+                <div id="topBtnBar">
+                    <DayNight />
+                </div>
+                <Field />
+                <Diolog />
+            </div>,
+            app
+        );
+    </script>
+</body>
+
+</html>
