@@ -49,6 +49,20 @@ body {
     border-color: #946912;
   }
 
+  .btn.mainShop {
+    background-color: #eec922;
+    border: 2px solid #b6821a;
+  }
+  .btn.mainShop:hover {
+    background-color: #7a7912;
+    border-color: #b6821a;
+  }
+
+  .btn.selectedShop {
+    background-color: #13bb13;
+    border: 2px solid #153005;
+  }
+
   .btn.remove {
     background-color: #eec922;
     border: 2px solid #b6821a;
@@ -63,9 +77,11 @@ body {
     color: rgb(0, 0, 0);
     font-size: 150%;
     border: 2px solid #b6821a;
-    right: 0;
-    top: 0;
+    /*right: 0;
+    top: 0;*/
   }
+
+  
 
   #topBtnBar {
     display: inline-block;
@@ -76,4 +92,16 @@ body {
     /*border: #000 1px solid;*/
     padding: 5px 10px;
     overflow: hidden;
+  }
+
+  #topBtnBarT {
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    right: 70px;
+    height: 50px;
+    /*border: #000 1px solid;*/
+    padding: 5px 10px;
+    overflow: hidden;
+    flex-direction: column;
   }

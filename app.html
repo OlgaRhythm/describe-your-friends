@@ -15,16 +15,44 @@
 <body id="mainBody" class="dayBody">
     <div id="program"></div>
     <script type="text/babel">
+
         class Field extends React.Component {
 
             render() {
                 return (
                     <div>
-                        <button className="btn"></button>
+                        <button className="btn">{this.props.children}</button>
                     </div>
                 )
             }
         }
+
+        class fullFields extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { fields: [['#', '#', '#', '#', '#', '#'], [0, 0, 0, 0, 0, 0]] };
+            };
+            fromShop = (idx, it, time) => {
+                var mas = this.state.fields;
+                mas[0][idx] = it;
+                mas[1][idx] = time;
+                this.setState({ fields: mas })
+            };
+            eachField = () => {
+                var mas = this.state.fields;
+                for (let i = 0; i < 6; i++) {
+                    return (
+                        <div>
+                            <Field key={i} time={mas[1][i]} fromShop={this.fromShop} >{mas[0][i]}</Field>
+                        </div>
+                    );
+                }
+            }
+            render() {
+                return (this.eachField);
+            };
+        }
+
         class Diolog extends React.Component {
             render() {
                 return (
@@ -100,9 +128,94 @@
         }
 
         class Talks extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { talhing: false };
+            };
+            StartTalking = () => {
+                if (this.state.talking) {
+                    this.setState({ talking: false });
+                } else {
+                    this.setState({ talking: true });
+                }
+            }
             render() {
+                if (this.state.talking) {
+                    return (
+                        <div>
+                            <div id="topBtnBarT">
+                                <button onClick={this.StartTalking}>talking</button>
+                            </div>
+                            <Diolog />
+                        </div>
+                    );
+                } else {
+                    return (
+                        <div>
+                            <div id="topBtnBarT">
+                                <button onClick={this.StartTalking}>talking</button>
+                            </div>
+                        </div>
+                    );
+                }
 
             };
+        }
+
+        class TheShop extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { selected: false };
+            };
+            select = () => {
+                if (this.state.selected) {
+                    this.setState({ selected: false });
+                } else {
+                    this.setState({ selected: true });
+                }
+            };
+
+            mainShop = () => {
+                return (
+                    <div>
+                        <button onClick={this.select} className="btn mainShop">{this.props.children}</button>
+                    </div>
+                );
+            };
+            selectedShop = () => {
+                return (
+                    <div>
+                        <button onClick={this.select} className="btn selectedShop">{this.props.children}</button>
+                    </div>
+                );
+            };
+            render() {
+                if (this.state.selected) {
+                    return this.selectedShop();
+                } else {
+                    return this.mainShop();
+                }
+            };
+        }
+
+        class TheBigShop extends React.Component {
+            items = ['Ш', '♥', '♦', '•', '○', '♣', '♠', '☼', '↕', '¶', '§', '↨', '↑', '↓', '▼', '//'];
+            price = [1, 2, 5, 10, 15, 16, 18,];
+            cost = [2, 4, 10, 20,];
+
+            view = (item, i) => {
+                return (
+                    <div>
+                        <TheShop key={i}>{item}</TheShop>
+                    </div>
+                );
+            };
+
+            render() {
+                return (
+                    this.items.map(this.view)
+                );
+            }
         }
 
         var app = document.getElementById("program");
@@ -111,8 +224,10 @@
                 <div id="topBtnBar">
                     <DayNight />
                 </div>
+                <Talks />
                 <Field />
                 <Diolog />
+                <TheBigShop />
             </div>,
             app
         );
