@@ -15,16 +15,182 @@
 <body id="mainBody" class="dayBody">
     <div id="program"></div>
     <script type="text/babel">
+
         class Field extends React.Component {
+            constructor(props) {
+                super(props);
+                this.choice = this.choice.bind(this);
+            };
+
+            choice = () => {
+                this.props.decide(this.props.index);
+            };
+
+            render() {
+                if (this.props.children == '#') {
+                    return (
+                        <div>
+                            <button onClick={this.choice} className="btn fieldFirst">{this.props.children}</button>
+                        </div>
+                    );
+                } else if (this.props.children == '*') {
+                    return (
+                        <div>
+                            <button onClick={this.choice} className="btn fieldSecond">{this.props.children}</button>
+                        </div>
+                    );
+                } else if (this.props.children == '☼') {
+                    return (
+                        <div>
+                            <button onClick={this.choice} className="btn fieldThird">{this.props.children}</button>
+                        </div>
+                    );
+                }
+            }
+        }
+
+        class FullFields extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { fields: ['#', '#', '#', '#', '#', '#'] };
+                this.choice = this.choice.bind(this);
+            }
+
+            choice = (i) => {
+                var mas = this.state.fields;
+                var arr = this.props.stat;
+                if (arr[0]) {
+                    if (mas[i] == '#') {
+                        mas[i] = '*';
+                    }
+                } else if (arr[1]) {
+                    if (mas[i] == '*') {
+                        mas[i] = '☼';
+                    }
+                } else if (arr[2]) {
+                    if (mas[i] == '☼') {
+                        mas[i] = '#';
+                        this.props.add();
+                    }
+                }
+                this.setState({ fields: mas });
+            };
+
+            view = (item, i) => {
+                return (
+                    <div>
+                        <Field key={i} index={i} decide={this.choice}>{item}</Field>
+                    </div>
+                );
+            };
+            render() {
+                return (
+                    this.state.fields.map(this.view)
+                );
+            };
+        }
+
+        class AllAct extends React.Component {
+            constructor(props) {
+                super(props);
+                /*theShopSelected, waterSelected, bagSelected, cntForBag*/
+                this.state = { mas: [false, false, false, 0] };
+            }
+
+            theShopChange = () => {
+                var arr = this.state.mas;
+                if (arr[0] == false) {
+                    arr[0] = true;
+                    arr[1] = false;
+                    arr[2] = false;
+                } else {
+                    arr[0] = false;
+                }
+                this.setState({ mas: arr });
+            };
+
+            theShopView = () => {
+                var arr = this.state.mas;
+                if (arr[0]) {
+                    return (<button onClick={this.theShopChange} className="btn selectedShop">:</button>);
+                } else {
+                    return (<button onClick={this.theShopChange} className="btn mainShop">:</button>);
+                }
+            };
+
+            waterChange = () => {
+                var arr = this.state.mas;
+                if (!arr[1]) {
+                    arr[1] = true;
+                    arr[0] = false;
+                    arr[2] = false;
+                } else {
+                    arr[1] = false;
+                }
+                this.setState({ mas: arr });
+            };
+
+            waterView = () => {
+                var arr = this.state.mas;
+                if (arr[1]) {
+                    return (<button onClick={this.waterChange} className="btn selectedShop">▲</button>);
+                } else {
+                    return (<button onClick={this.waterChange} className="btn mainShop">▲</button>);
+                }
+            };
+
+            bagChange = () => {
+                var arr = this.state.mas;
+                if (!arr[2]) {
+                    arr[2] = true;
+                    arr[0] = false;
+                    arr[1] = false;
+                } else {
+                    arr[2] = false;
+                }
+                this.setState({ mas: arr });
+            };
+
+            bagAddItem = () => {
+                var arr = this.state.mas;
+                arr[3]++;
+                this.setState({ mas: arr });
+            };
+
+            bagView = () => {
+                var arr = this.state.mas;
+                if (arr[2]) {
+                    return (<button onClick={this.bagChange} className="btn selectedShop">{arr[3]}</button>);
+                } else {
+                    return (<button onClick={this.bagChange} className="btn mainShop">{arr[3]}</button>);
+                }
+            };
 
             render() {
                 return (
                     <div>
-                        <button className="btn"></button>
+                        <div className="groupOfButtons">
+                            {this.theShopView()}
+                            {this.waterView()}
+                            {this.bagView()}
+                        </div>
+                        <div className="bigFieldBlock">
+                            <div className="fieldBlock">
+                                <FullFields stat={this.state.mas} add={this.bagAddItem} />
+                            </div>
+                            <div className="fieldBlock">
+                                <FullFields stat={this.state.mas} add={this.bagAddItem} />
+                            </div>
+                            <div className="fieldBlock">
+                                <FullFields stat={this.state.mas} add={this.bagAddItem} />
+                            </div>
+                        </div>
                     </div>
-                )
-            }
+                );
+            };
+
         }
+
         class Diolog extends React.Component {
             render() {
                 return (
@@ -34,6 +200,41 @@
                         <button>No</button>
                     </div>
                 );
+            };
+        }
+
+        class Talks extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { talhing: false };
+            };
+            StartTalking = () => {
+                if (this.state.talking) {
+                    this.setState({ talking: false });
+                } else {
+                    this.setState({ talking: true });
+                }
+            }
+            render() {
+                if (this.state.talking) {
+                    return (
+                        <div>
+                            <div>
+                                <button onClick={this.StartTalking} className="btn talkIn">☺</button>
+                            </div>
+                            <Diolog />
+                        </div>
+                    );
+                } else {
+                    return (
+                        <div>
+                            <div id>
+                                <button onClick={this.StartTalking} className="btn talk">?</button>
+                            </div>
+                        </div>
+                    );
+                }
+
             };
         }
 
@@ -78,41 +279,14 @@
             };
         }
 
-        class Vegetables extends React.Component {
-            constructor(props) {
-                super(props);
-                this.state = { do: false };
-            }
-            plant = () => {
-
-            };
-            render() {
-                if (this.state.do) {
-                    <div>
-                        <button ref="meaning" defaultValue={this.props.children}></button>
-                    </div>
-                } else {
-                    <div>
-                        <button ref="meaning" defaultValue={this.props.children}></button>
-                    </div>
-                }
-            }
-        }
-
-        class Talks extends React.Component {
-            render() {
-
-            };
-        }
-
         var app = document.getElementById("program");
         ReactDOM.render(
             <div>
                 <div id="topBtnBar">
                     <DayNight />
                 </div>
-                <Field />
-                <Diolog />
+                <Talks />
+                <AllAct />
             </div>,
             app
         );
