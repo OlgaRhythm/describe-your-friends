@@ -184,6 +184,15 @@
                             <div className="fieldBlock">
                                 <FullFields stat={this.state.mas} add={this.bagAddItem} />
                             </div>
+                            <div className="fieldBlock">
+                                <FullFields stat={this.state.mas} add={this.bagAddItem} />
+                            </div>
+                            <div className="fieldBlock">
+                                <FullFields stat={this.state.mas} add={this.bagAddItem} />
+                            </div>
+                            <div className="fieldBlock">
+                                <FullFields stat={this.state.mas} add={this.bagAddItem} />
+                            </div>
                         </div>
                     </div>
                 );
@@ -191,23 +200,13 @@
 
         }
 
-        class Diolog extends React.Component {
-            render() {
-                return (
-                    <div className="box">
-                        <div>Hello, world!</div>
-                        <button>Yes</button>
-                        <button>No</button>
-                    </div>
-                );
-            };
-        }
-
         class Talks extends React.Component {
             constructor(props) {
                 super(props);
-                this.state = { talhing: false };
+                this.state = { talking: false };
+                this.state = { theme: 1 };
             };
+
             StartTalking = () => {
                 if (this.state.talking) {
                     this.setState({ talking: false });
@@ -215,6 +214,145 @@
                     this.setState({ talking: true });
                 }
             }
+            /**/
+            userName = '';
+            saveName = () => {
+                this.userName = this.refs.newTxt.value;
+                this.setState({ theme: 2 });
+            };
+
+            theme1 = () => {
+                return (
+                    <div className="box">
+                        <div>Welcome to your own Farm! At first, let us get acquainted.</div>
+                        <div> My name is ☼. And what is your name?</div>
+                        <textarea ref="newTxt" defaultValue={this.props.children}>The Best Farmer</textarea>
+                        <button onClick={this.saveName} className="btn answer1">Ok</button>
+                    </div>
+                );
+            };
+
+            theme2 = () => {
+                return (
+                    <div className="box">
+                        <div>Nice to meet you, {this.userName}!</div>
+                        <div>Well, in this game you should grow flowers. Use buttons on the left</div>
+                        <div>To stop talking just click on the button with "☺"</div>
+                        <button onClick={this.btn3} className="btn answer1">What is ":"?</button>
+                        <button onClick={this.btn4} className="btn answer2">What is "▲"?</button>
+                        <button onClick={this.btn5} className="btn answer3">What is the number?</button>
+                        <button onClick={this.btn6} className="btn answer4">What is day (or night)?</button>
+                    </div>
+                );
+            };
+            btn3 = () => {
+                this.setState({ theme: 3 });
+            };
+            btn4 = () => {
+                this.setState({ theme: 4 });
+            };
+            btn5 = () => {
+                this.setState({ theme: 5 });
+            };
+            btn6 = () => {
+                this.setState({ theme: 6 });
+            };
+            btn7 = () => {
+                this.setState({ theme: 7 });
+            };
+            theme3 = () => {
+                return (
+                    <div className="box">
+                        <div>If you want to plant seeds,</div>
+                        <div>click on this button</div>
+                        <div>and after that on the "#"</div>
+                        <div>Anything else?</div>
+                        <button onClick={this.btn4} className="btn answer1">What is "▲"?</button>
+                        <button onClick={this.btn5} className="btn answer2">What is the number?</button>
+                        <button onClick={this.btn6} className="btn answer3">What is day (or night)?</button>
+                    </div>
+                );
+            };
+            theme4 = () => {
+                return (
+                    <div className="box">
+                        <div>It is water, just click on it. </div>
+                        <div>If your flowers look like "*",</div>
+                        <div>they need some water.</div>
+                        <div>Anything else?</div>
+                        <button onClick={this.btn3} className="btn answer1">What is ":"?</button>
+                        <button onClick={this.btn5} className="btn answer2">What is the number?</button>
+                        <button onClick={this.btn6} className="btn answer3">What is day (or night)?</button>
+                    </div>
+                );
+            };
+            theme5 = () => {
+                return (
+                    <div className="box">
+                        <div>It is a number of collected flowers!</div>
+                        <div>Click on this button to collect "☼"</div>
+                        <div>Increase this number as much as you </div>
+                        <div>can!</div>
+                        <div>Anything else?</div>
+                        <button onClick={this.btn3} className="btn answer1">What is ":"?</button>
+                        <button onClick={this.btn4} className="btn answer2">What is "▲"?</button>
+                        <button onClick={this.btn6} className="btn answer3">What is day (or night)?</button>
+                    </div>
+                );
+            };
+            theme6 = () => {
+                return (
+                    <div className="box">
+                        <div>Just changing the background, nothing else.</div>
+                        <div>But you can imagine, that your flowers need it!</div>
+                        <div>Anything else?</div>
+                        <button onClick={this.btn3} className="btn answer1">What is ":"?</button>
+                        <button onClick={this.btn4} className="btn answer2">What is "▲"?</button>
+                        <button onClick={this.btn5} className="btn answer3">What is the number?</button>
+                        <button onClick={this.btn7} className="btn answer4">Who are you?</button>
+                    </div>
+                );
+            };
+            theme7 = () => {
+                return (
+                    <div className="box">
+                        <div>Есть вещи, которые стоит не знать!</div>
+                        <div>Но раз ты спрашиваешь, {this.userName}...</div>
+                        <div>Я потратила на игру несколько дней</div>
+                        <div>Перед этим несколько недель проходила курс</div>
+                        <div>И я очень рада, что наконец-то игра готова и ты играешь!</div>
+                        <button onClick={this.btn3}>What is ":"?</button>
+                        <button onClick={this.btn4}>What is "▲"?</button>
+                        <button onClick={this.btn5}>What is the number?</button>
+                        <button onClick={this.btn6}>What is day (or night)?</button>
+                    </div>
+                );
+            };
+
+            viewTheme = () => {
+                if (this.state.theme == 1) {
+                    return this.theme1();
+                }
+                if (this.state.theme == 2) {
+                    return this.theme2();
+                }
+                if (this.state.theme == 3) {
+                    return this.theme3();
+                }
+                if (this.state.theme == 4) {
+                    return this.theme4();
+                }
+                if (this.state.theme == 5) {
+                    return this.theme5();
+                }
+                if (this.state.theme == 6) {
+                    return this.theme6();
+                }
+                if (this.state.theme == 7) {
+                    return this.theme7();
+                }
+            };
+
             render() {
                 if (this.state.talking) {
                     return (
@@ -222,7 +360,7 @@
                             <div>
                                 <button onClick={this.StartTalking} className="btn talkIn">☺</button>
                             </div>
-                            <Diolog />
+                            {this.viewTheme()}
                         </div>
                     );
                 } else {
