@@ -11,12 +11,55 @@ body {
     border: 2px solid #aaa719;
     background-color: #c8c9b6;
     width: 25%;
-    margin-left: 25%;
+    margin-left: 45%;
+    
     font-size: 1.4em;
     flex-direction: column;
     align-items: center;
     margin-bottom: 10px;
     padding: 10px;
+  }
+
+  .fieldBlock {
+    display: flex;
+    padding: 10px;
+    border: 2px  #aaa719;
+    width: 25%;
+    margin-left: 0%;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+  }
+
+  .bigFieldBlock {
+    display: flex;
+    position: fixed;
+    padding: 10px;
+    border: 2px  #aaa719;
+    width: 25%;
+    margin-left: 0%;
+    flex-direction: column;
+    align-items: left;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    top: 100px;
+    left: 0;
+  }
+
+  .groupOfButtons {
+    display: flex;
+    position: fixed;
+    padding: 10px;
+    border: 2px #aaa719;
+    width: 25%;
+    margin-left: 0%;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 5px 20px;
+    top: 0;
+    left: 0;
   }
   
   button.btn {
@@ -26,45 +69,118 @@ body {
     cursor: pointer;
     font-size: 0.65em;
     outline: none;
+    align-items: center;
   }
   
-  .btn.field {
-    background-color: #4eafc9;
-    border: 2px solid #2a89a2;
+  .btn.fieldFirst {
+    background-color: #a07f49;
+    border: 1px solid #1f1100;
+    height: 50px;
+    width: 50px; 
+    font-size: 200%;
+   
+  }
+  
+  .btn.fieldSecond {
+    background-color: #bde74a;
+    border: 1px solid #1f1100;
+    height: 50px;
+    width: 50px; 
+    font-size: 200%;
+
   }
 
-  .btn.field:hover {
-    background-color: #2a89a2;
-    border-color: #1d6f85;
+  .btn.fieldThird {
+    background-color: #3f940d;
+    border: 1px solid #1f1100;
+    height: 50px;
+    width: 50px; 
+    font-size: 200%;
+
   }
-  
+
   .btn.talk {
-    background-color: #dda66d;
+    background-color: #eec922;
     border: 2px solid #b6821a;
+    height: 50px;
+    width: 50px; 
+    right: 120px;
+    top: 5px;
+    position: fixed;
+    padding: 5px 10px;
+    font-size: 200%;
 
   }
   
   .btn.talk:hover {
-    background-color: #b6821a;
+    background-color: #ca9324;
     border-color: #946912;
+    height: 50px;
+    width: 50px; 
+    right: 150px;
+    top: 5px;
+    position: fixed;
+    padding: 5px 10px;
   }
 
-  .btn.remove {
+  .btn.talkIn {
+    background-color: #a35a0c;
+    border: 2px solid #b6821a;
+    height: 50px;
+    width: 50px; 
+    right: 150px;
+    top: 5px;
+    position: fixed;
+    padding: 5px 10px;
+    font-size: 200%;
+  }
+
+  .btn.talkIn:hover {
+    background-color: #724e06;
+    border-color: #946912;
+    height: 50px;
+    width: 50px; 
+    right: 150px;
+    top: 5px;
+    position: fixed;
+    padding: 5px 10px;
+  }
+
+  .btn.mainShop {
     background-color: #eec922;
     border: 2px solid #b6821a;
-  }
+    margin-right: 10px;
+    height: 50px;
+    width: 50px;
+    font-size: 160%;
 
-  .btn.remove:hover {
+  }
+  .btn.mainShop:hover {
     background-color: #7a7912;
     border-color: #b6821a;
+    margin-right: 10px;
   }
+
+  .btn.selectedShop {
+    background-color: #13bb13;
+    border: 2px solid #153005;
+    margin-right: 10px;
+    height: 50px;
+    width: 50px;
+    font-size: 160%;
+
+  }
+
+
   .btn.dayOrNight {
     background-color: #bb9824;
     color: rgb(0, 0, 0);
     font-size: 150%;
     border: 2px solid #b6821a;
-    right: 0;
-    top: 0;
+    height: 50px;
+    width: 100px; 
+    /*right: 0;
+    top: 0;*/
   }
 
   #topBtnBar {
@@ -76,4 +192,16 @@ body {
     /*border: #000 1px solid;*/
     padding: 5px 10px;
     overflow: hidden;
+  }
+
+  #topBtnBarT {
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    right: 70px;
+    height: 50px;
+    /*border: #000 1px solid;*/
+   
+    overflow: hidden;
+    flex-direction: column;
   }
