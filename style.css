@@ -2,7 +2,7 @@ body {
     background-color: #f3f7bb; 
   }
   body.nightBody {
-    background-color: #24033f; 
+    background-color: #2f0349; 
   }
   
   .box {
@@ -100,7 +100,7 @@ body {
   }
 
   .btn.talk {
-    background-color: #eec922;
+    background-color: #ffde4a;
     border: 2px solid #b6821a;
     height: 50px;
     width: 50px; 
@@ -113,8 +113,8 @@ body {
   }
   
   .btn.talk:hover {
-    background-color: #ca9324;
-    border-color: #946912;
+    background-color: #ffc04a;
+    border-color: #b6821a;
     height: 50px;
     width: 50px; 
     right: 150px;
@@ -124,8 +124,8 @@ body {
   }
 
   .btn.talkIn {
-    background-color: #a35a0c;
-    border: 2px solid #b6821a;
+    background-color: #ee8522;
+    border-color: #946912;
     height: 50px;
     width: 50px; 
     right: 150px;
@@ -136,8 +136,8 @@ body {
   }
 
   .btn.talkIn:hover {
-    background-color: #724e06;
-    border-color: #946912;
+    background-color: #88a815;
+    border: 2px solid #3b4908;
     height: 50px;
     width: 50px; 
     right: 150px;
@@ -147,7 +147,7 @@ body {
   }
 
   .btn.mainShop {
-    background-color: #eec922;
+    background-color: #ffde4a;
     border: 2px solid #b6821a;
     margin-right: 10px;
     height: 50px;
@@ -156,14 +156,14 @@ body {
 
   }
   .btn.mainShop:hover {
-    background-color: #7a7912;
+    background-color: #ffc04a;
     border-color: #b6821a;
     margin-right: 10px;
   }
 
   .btn.selectedShop {
-    background-color: #13bb13;
-    border: 2px solid #153005;
+    background-color: #ff641c;
+    border: 2px solid #b6821a;
     margin-right: 10px;
     height: 50px;
     width: 50px;
@@ -173,15 +173,33 @@ body {
 
 
   .btn.dayOrNight {
-    background-color: #bb9824;
+    background-color: #c47e24;
     color: rgb(0, 0, 0);
     font-size: 150%;
-    border: 2px solid #b6821a;
+    border: 2px solid #a07215;
     height: 50px;
     width: 100px; 
     /*right: 0;
     top: 0;*/
   }
+
+  .btn.answer1{
+    background-color: #ff641c;
+    border: 1px solid #7e310d;
+  }
+  .btn.answer2{
+    background-color: #78b83c;
+    border: 1px solid #41661e;
+  }
+  .btn.answer3{
+    background-color: #e0b232;
+    border: 1px solid #8a6c1b;
+  }
+  .btn.answer4{
+    background-color: #997192;
+    border: 1px solid #4d2f47;
+  }
+
 
   #topBtnBar {
     display: inline-block;
